@@ -1,0 +1,204 @@
+.userConten{
+    margin-top: var(--mg-t);
+}
+
+.boxTop{
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(123, 121, 121, 0.1);
+    background: var(--color-white);
+
+}
+
+.banner{
+    height: 400px;
+    background: black;
+    border-bottom-left-radius: var(--radius-10px);
+    border-bottom-right-radius: var(--radius-10px);
+    overflow: hidden;
+}
+
+.banner > .imgs{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.viewTop{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: -30px;
+}
+
+.topLeft, .topRight{
+    display: flex;
+    align-items: center;
+}
+
+.topRight{
+    gap: 5px;
+}
+
+.box1{
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+
+    i{
+        font-size: 20px;
+    }
+
+    &:hover{
+        background: var(--color-hover);
+    }
+}
+.box2 button{
+    border-radius: 5px;
+    padding: 5px 10px;
+    background: var(--color-primary);
+    color: var(--color-white);
+    border: none;
+}
+
+.userAvata .setImg{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    
+}
+
+.textName{
+    font-size: 30px;
+    margin-bottom: 0;
+    font-weight: 700;
+}
+
+.title{
+    margin-bottom: 0;
+    font-size: 20px;
+    color: #65676B;
+}
+
+.inForA{
+    padding: 0 40px;
+}
+
+.navCenter{
+    padding-top: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    border-top: 1px solid var(--color-gray);
+    margin-top: -30px;
+    
+    p{
+        margin-bottom: 0;
+        padding: 10px 30px;
+        border-radius: 10px;
+        font-size: 15px;
+        color: var(--color-gray);
+    }
+    
+}
+
+.iconNav{
+    margin-bottom: 10px;
+    p:hover{
+        background: var(--color-bg);
+    }
+}
+
+.bmn{
+    position: relative;
+    text-decoration: none;
+}
+
+.active::after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    height: 4px;
+    width: 100%;
+    background: var(--color-primary);
+    left: 0;
+}
+
+.active i{
+    color: var(--color-primary);
+    &:hover{
+        background: transparent;
+    }
+}
+
+.boxLoading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.3);
+}
+.userAvata{
+    width: 200px;
+    height: 200px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    position: relative;
+    margin-right: 10px;
+    transform: translateY(-50px);
+    border-radius: 50%;
+    overflow: hidden;
+    border: 5px solid var(--color-white);
+}
+
+
+
+@media screen and (max-width: 768px){
+    .boxItem{
+        display: flex;
+        flex-direction: column;
+    }
+    .topLeft{
+        flex-direction: column;
+        align-items: center;
+    }
+    .userAvata{
+        width: 150px;
+        height: 150px;
+        flex-grow: 0;
+        flex-shrink: 0;
+        margin-right: 0px;
+        transform: translateY(0);
+        border-radius: 50%;
+        overflow: hidden;
+        border: 5px solid var(--color-white);
+    }
+    .topRight{
+        display: none;
+    }
+    .banner{
+        height: 200px;
+        background: black;
+        border-bottom-left-radius: var(--radius-10px);
+        border-bottom-right-radius: var(--radius-10px);
+        overflow: hidden;
+    }
+
+    .inForA{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 50px;
+    }
+
+    .userName{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+}

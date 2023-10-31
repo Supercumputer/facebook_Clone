@@ -1,0 +1,56 @@
+
+.userBox{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+    gap: 10px;
+    cursor: pointer;
+    &:hover{
+        background: var(--color-hover);
+    }
+}
+
+
+.userAvata{
+    width: 40px;
+    height: 40px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    position: relative;
+
+    &::after{
+        content: '';
+        position: absolute;
+        padding: 5px;
+        background-color: var(--color-online);
+        border-radius: 50%;
+        bottom: 0;
+        right: 0;
+        box-shadow: 0 0 2px 2px #fff;
+    }
+}
+
+.userIcon{
+    font-size: 20px;
+    padding: 0 5px;
+}
+
+.userAvata .setImg{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.userName{
+    margin-bottom: 0;
+}
+
+.linkText{
+    text-decoration: none;
+    color: var(--color-text);
+    font-size: 17px;
+    font-weight: 500;
+}

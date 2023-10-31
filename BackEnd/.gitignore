@@ -1,0 +1,26 @@
+# Node.js dependencies
+node_modules/
+
+# Built files
+build/
+dist/
+
+# Environment variables
+.env
+.env.local
+
+# Logs and temporary files
+logs/
+tmp/
+
+# Code coverage reports
+coverage/
+
+# Personal log files
+*.log
+
+# IntelliJ IDEA files
+.idea/
+
+# MacOS system files
+.DS_Store

@@ -1,0 +1,31 @@
+.box{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+
+    h2{
+        margin-bottom: 0;
+        font-size: 23px;
+        font-weight: 700;
+    }
+
+    .icon{
+        width: 40px;
+        height: 40px;
+        display: flex;
+        background: var(--color-bg);
+        border-radius: 50%;
+        &:hover{
+            background: #e7e9eb;
+        }
+    }
+
+    .icon > i{
+        font-size: 20px;
+        margin: auto;
+    }
+
+    
+}
+

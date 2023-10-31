@@ -1,0 +1,106 @@
+.userAvata{
+    width: 40px;
+    height: 40px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    position: relative;
+    margin-right: 10px;
+}
+
+.userAvata .setImg{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.PostBox{
+    padding: 10px 15px;
+    border-radius: 5px;
+    background: var(--color-white);
+    margin-bottom: 15px;
+}
+
+.PostTop{
+    display: flex;
+    align-items: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--color-gray);
+}
+
+.PostTops{
+    display: flex;
+    align-items: center;
+    padding-bottom: 10px;
+}
+.InputBox{
+    flex: 1;
+}
+.InputBox input{
+    padding: 10px 10px;
+    width: 100%;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    background: var(--color-hover);
+    color: var(--color-gray);
+
+}
+
+.PostButton{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.bomx{
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    gap: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    i{
+        font-size: 20px;
+    }
+}
+
+.textName{
+    font-size: 18px;
+    margin-bottom: 0;
+}
+
+.title{
+    margin-bottom: 0;
+    font-size: 14px;
+    color: #65676B;
+}
+
+.fotbot{
+    padding: 10px 10px 5px;
+    p{
+        padding: 7px;
+        border: 1px solid #ccc;
+        text-align: center;
+        font-size: 20px;
+        font-weight: 700;
+        background: var(--color-bg);
+        border-radius: 5px;
+        color: #ccc;
+        cursor: pointer;
+    }
+    
+    .ox{
+        color: var(--color-white);
+        background: var(--color-primary);
+    }
+}
+
+.setImgs{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

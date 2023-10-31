@@ -1,0 +1,159 @@
+.formLogin{
+    background: #F0F2F5;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.left{
+   display: flex;
+   flex-direction: column;
+}
+
+
+
+.textName{
+    color: var(--color-primary);
+    font-size: 5rem;
+    font-weight: 900;
+}
+
+.title{
+    font-size: 24px;
+    line-height: 28px;
+    width: auto
+}
+
+.divbox{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.formBox{
+    background: var(--color-white);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.boxIn{
+    padding: 12px;
+    font-size: 15px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 5px;
+}
+
+.subBtn{
+    width: 100%;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--color-white);
+    background: var(--color-primary);
+    border: none;
+    border-radius: 10px;
+}
+
+.ttkm{
+    padding: 10px;
+    background: var(--color-green);
+    width: 200px;
+    border: none;
+    border-radius: 10px;
+    color: var(--color-white);
+    font-weight: 500;
+}
+
+.bnv{
+    display: flex;
+    justify-content: center;
+    padding: 15px 0 10px;
+}
+
+.qmk{
+    text-align: center;
+    font-size: 15px;
+    padding: 20px;
+    border-bottom: 1px solid #ccc;
+}
+.tt{
+    text-decoration: none;
+    &:hover{
+        text-decoration:underline;
+    }
+}
+
+.textdk{
+    font-size: 30px;
+    padding-bottom: 200px;
+}
+
+.textVa{
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+}
+
+.df{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #ccc;
+    margin: 10px;
+    border-radius: 5px;
+
+    &.vali{
+        border: 1px solid red;
+    }
+}
+
+
+
+
+.cl{
+    margin-bottom: -1px;
+    padding: 10px;
+}
+
+.cls{
+    margin-bottom: 5px;
+    font-size: 13px;
+}
+
+.btndk{
+    display: flex;
+    justify-content: center;
+}
+
+.dk{
+    padding: 10px;
+    background: var(--color-green);
+    width: 200px;
+    border: none;
+    border-radius: 10px;
+    color: var(--color-white);
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+@media screen and (max-width: 992px) {
+    .formLogin{
+        flex-direction: column;
+        gap: 0;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .left{
+        text-align: center;
+    }
+}

@@ -1,0 +1,19 @@
+
+.conten{
+    display: flex;
+    margin-top: var(--mg-t);
+}
+.left{
+    background: var(--color-white);
+    padding: 10px;
+    height: calc(100vh - var(--mg-t));
+    position: sticky;
+    top: var(--mg-t);
+}
+
+.right{
+    display: flex;
+    justify-content: center;
+}
+
+
