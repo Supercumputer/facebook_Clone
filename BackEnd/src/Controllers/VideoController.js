@@ -1,5 +1,5 @@
-const User = require("../Model/userModule/users");
-const Video = require("../Model/userModule/videos");
+const User = require("../Model/users");
+const Video = require("../Model/videos");
 
 class VideoController {
   async showAllVideo(req, res) {}
@@ -12,7 +12,7 @@ class VideoController {
       if (duse && data) {
         let arr = data.map((video) => {
           let us = duse.find((itm) => itm._id == video.userId);
-  
+
           return {
             title: video.title,
             id: video._id,
@@ -24,8 +24,8 @@ class VideoController {
             name: `${us.lastName} ${us.firstName}`,
           };
         });
-        
-        res.status(200).json(arr)
+
+        res.status(200).json(arr);
       }
     } catch (error) {}
   }

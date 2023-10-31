@@ -2,17 +2,17 @@ import classNames from 'classnames/bind';
 import styles from './PostNew.module.scss';
 import Img from '../Img/Img';
 import UserName from '../UserName/UserName';
-import { useContext, useEffect, useState } from 'react';
-import { UserContext } from '../../UseContext/LoginContext';
+import { useEffect, useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import { postApi } from '../../Api/service';
 import { toast } from 'react-toastify';
+import { useSelector } from 'react-redux';
 
 const cx = classNames.bind(styles);
 
 function PostNew() {
-    const { user } = useContext(UserContext);
+    const athu = useSelector(state => state.auth.auth)
     const [show, setShow] = useState(false);
     const [selectedImage, setSelectedImage] = useState();
     const [title, setTitle] = useState('');
@@ -29,21 +29,6 @@ function PostNew() {
         setSelectedImage(file);
     };
 
-    // const handlePostApi = async () => {
-    //     try {
-    //         if (title || linkImg) {
-    //             let res = await postApi(user.id, title, linkImg);
-    //             if (res && res.data) {
-    //                 toast.success(res.data.messenger)
-    //                 handleClose()
-    //             }
-    //         } else {
-    //             toast.warning('Bạn phải nhập vào title hoặc link ảnh !!!');
-    //         }
-    //     } catch (error) {
-    //         toast.error('Lỗi gọi Api post');
-    //     }
-    // };
     const handlePostApi = async () => {
         const formData = new FormData();
         formData.append('title', title);
@@ -51,7 +36,7 @@ function PostNew() {
 
         // Gửi formData đến máy chủ
         if (title || selectedImage) {
-            let res = await postApi(user.id, formData);
+            let res = await postApi('user.id', formData);
             if (res && res.data) {
                 toast.success(res.data.messenger);
                 handleClose();
@@ -69,12 +54,12 @@ function PostNew() {
             <div className={cx('PostBox')}>
                 <div className={cx('PostTop')}>
                     <div className={cx('userAvata')}>
-                        <Img src={user.avata} alt="" className={cx('setImg')} />
+                        <Img src={athu.account.avata} alt="" className={cx('setImg')} />
                     </div>
                     <div className={cx('InputBox')}>
                         <input
                             type="text"
-                            placeholder={`${user.firstName} ơi, bạn đang nghĩ gì thế?`}
+                            placeholder={`${athu.account.firstName} ơi, bạn đang nghĩ gì thế?`}
                             onClick={handleShow}
                         />
                     </div>
@@ -94,10 +79,10 @@ function PostNew() {
                     <Form>
                         <div className={cx('PostTops')}>
                             <div className={cx('userAvata')}>
-                                <Img src={user.avata} alt="" className={cx('setImg')} />
+                                <Img src={athu.account.avata} alt="" className={cx('setImg')} />
                             </div>
                             <div className={cx('userName')}>
-                                <h2 className={cx('textName')}>{user.name}</h2>
+                                <h2 className={cx('textName')}>{athu.account.firstName + ' '+ athu.account.firstName}</h2>
                                 <p className={cx('title')}>gearvn.com</p>
                             </div>
                         </div>
@@ -107,7 +92,7 @@ function PostNew() {
                                 autoFocus
                                 as="textarea"
                                 rows={2}
-                                placeholder={`${user.firstName} ơi, bạn đang nghỉ gì thế ?`}
+                                placeholder={`${athu.account.firstName} ơi, bạn đang nghỉ gì thế ?`}
                                 onChange={(e) => setTitle(e.target.value)}
                             />
                         </Form.Group>

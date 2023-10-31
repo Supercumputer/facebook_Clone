@@ -1,11 +1,11 @@
 import classNames from 'classnames/bind';
 import styles from './DefaultLayout.module.scss';
-import { useState, useContext, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Header from '../../Components/Header/Header';
 import UserName from '../../Components/UserName/UserName';
 import Maketing from '../../Components/Maketing/Maketing';
 import Friend from '../../Components/Friend/Friend';
-import {UserContext} from '../../UseContext/LoginContext'
+import { useSelector } from 'react-redux';
 import {getfriend} from '../../Api/service' 
 const cx = classNames.bind(styles);
 
@@ -132,14 +132,14 @@ const listMenu = [
 
 
 function DefaultLayout({ children }) {
-    const {user} = useContext(UserContext)
+    const athu = useSelector(state => state.auth.auth)
     const [history, setHistory] = useState(listMenu);
     const [value, setValue] = useState();
     const [friend, setFriend] = useState([])
 
 
     useEffect(()=>{
-        getFriendApi(user.id)
+        getFriendApi('user.id')
     }, [])  
 
     const getFriendApi = async (id) => {
@@ -174,7 +174,7 @@ function DefaultLayout({ children }) {
             <div className={cx('conten','justify-content-xl-between','justify-content-around')}>
                 
                 <div className={cx('contenLeft', 'col-3','d-none' ,'d-xl-block' ,'d-xxl-block')}>
-                    <UserName to={`user/${user.id}`} avata={user.avata} firstName={user.name} />
+                    <UserName to={`user/${athu.account.id}`} avata={athu.account.avata} firstName={athu.account.firstName + ' '+ athu.account.firstName} />
                     {history.map((item, index) => {
                         let isChildren = item.children;
                         let isHiden = item.hiden;
@@ -227,7 +227,7 @@ function DefaultLayout({ children }) {
                     <div className={cx('borderLineRight')}>
                         <p>Trang và trang cá nhân của bạn</p>
                     </div>
-                    <UserName avata={user.avata} firstName={user.name} to={`/user/${user.id}`}/>
+                    <UserName avata={athu.account.avata} firstName={athu.account.firstName + ' '+ athu.account.firstName} to={`/user/${athu.account.id}`}/>
                     <div className={cx('borderLine')}>
                         <p className={cx('t1')}>Lời mời kết bạn</p>
                     </div>

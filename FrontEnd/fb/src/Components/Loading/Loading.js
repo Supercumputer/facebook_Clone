@@ -1,8 +1,15 @@
-import React from "react";
-import ReactLoading from "react-loading";
+import classNames from 'classnames/bind';
+import styles from './Loading.module.scss';
 
-const Example = () => (
-    <ReactLoading type='spinningBubbles' color="#fff" />
-);
+const cx = classNames.bind(styles);
 
-export default Example;
+const Loading = () => {
+    return (
+        <div className={cx('box')}>
+            <div className={cx('loader')}></div>
+        </div>
+    );
+};
+
+export default Loading;
+

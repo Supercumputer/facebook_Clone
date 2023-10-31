@@ -1,13 +1,9 @@
 import classNames from 'classnames/bind';
 import styles from './SpayItem.module.scss';
 import Img from '../Img/Img';
-import { useContext } from 'react';
-import { UserContext } from '../../UseContext/LoginContext';
 const cx = classNames.bind(styles);
 
-function SpayItem({ name, avata, img}) {
-    const { user } = useContext(UserContext);
-    
+function SpayItem({ name, avata, img }) {
     return (
         <div className={cx('itemBox')}>
             {name ? (
@@ -27,7 +23,7 @@ function SpayItem({ name, avata, img}) {
             ) : (
                 <div className={cx('itemDefault')}>
                     <div className={cx('imgTop')}>
-                        <Img src={user.avata} alt={''} className={cx('imgs','iml')} />
+                        <Img src={'user.avata'} alt={''} className={cx('imgs', 'iml')} />
                     </div>
                     <div className={cx('conBottom')}>
                         <p>Tạo tin</p>

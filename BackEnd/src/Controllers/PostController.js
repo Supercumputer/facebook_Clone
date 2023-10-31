@@ -1,5 +1,5 @@
-const User = require("../Model/userModule/users");
-const Post = require("../Model/userModule/posts");
+const User = require("../Model/users");
+const Post = require("../Model/posts");
 
 class PostController {
   async getAllPost(req, res) {
@@ -28,7 +28,6 @@ class PostController {
 
   async upPost(req, res) {
     try {
-      
       const { title } = req.body;
       const imagePath = req.file.path;
       await Post.create({
@@ -39,9 +38,8 @@ class PostController {
       return res.status(200).json({ messenger: "Thanh cong" });
     } catch (error) {
       return res.status(500).json({ messenger: "that bai" });
-    } 
+    }
   }
-  
 }
 
 module.exports = new PostController();

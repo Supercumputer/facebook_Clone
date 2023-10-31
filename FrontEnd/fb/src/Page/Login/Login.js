@@ -1,11 +1,13 @@
 import className from 'classnames/bind';
 import styles from './Login.module.scss';
 import { Link, useNavigate } from 'react-router-dom';
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
-import { login, register } from '../../Api/service';
+import { apiLogin, apiRegister } from "../../Api/service";
 import { toast } from 'react-toastify';
-import { UserContext } from '../../UseContext/LoginContext';
+import { login } from '../../Redux/authentication';
+import { useDispatch } from 'react-redux';
+
 const cx = className.bind(styles);
 
 function isEmail(value) {
@@ -19,9 +21,8 @@ function isPassWord(value) {
 }
 
 function Login() {
-    const {logIn} = useContext(UserContext)
-    const navigate = useNavigate()
-    
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
     const [show, setShow] = useState(false);
     const [emailLog, setEmailLog] = useState('');
     const [passWordLog, setpassWordLog] = useState('');
@@ -32,7 +33,6 @@ function Login() {
     const [day, setDay] = useState('');
     const [month, setMonth] = useState('');
     const [year, setYear] = useState('');
-    
 
     const [checked, setChecked] = useState('');
 
@@ -52,35 +52,34 @@ function Login() {
 
     const [validate, setValidate] = useState(valid);
 
-    const logInApi = async (email, passWord) => {
-        console.log('loop')
+    const logInApi = async (data) => {
         try {
-            let res = await login(email, passWord);
-            if(res && res.data && res.data.status === true){
-                toast.success(res.data.messenger)
-                logIn(res.data)
-                navigate('/')
-            }else{
-                toast.error(res.data.messenger)
+            let res = await apiLogin(data);
+            console.log(res)
+            if (res && res.data && res.status === 200) {
+                dispatch(login(res.data));
+                localStorage.setItem('jwt', res.data.token)
+                navigate('/');
             }
         } catch (error) {
-            toast.error("Đã xảy ra lỗi khi đăng nhập.");
+            toast.error('Đã xảy ra lỗi khi đăng nhập.');
         }
     };
 
-    const registerApi = async (LastName, firstName, email, passWord, day, month, year, gioiTinh) => {
+    const registerApi = async (data) => {
         try {
-            let res = await register(LastName, firstName, email, passWord, day, month, year, gioiTinh);
-            if(res && res.data && res.data.status === true){
-                toast.success(res.data.messenger)
-                handleClose()
-                setEmailLog('')
-                setpassWordLog('')
-            }else{
-                toast.error(res.data.messenger)
+            let res = await apiRegister(data);
+           
+            if (res && res.data && res.status === 200) {
+                toast.success(res.data.message);
+                handleClose();
+                setEmailLog('');
+                setpassWordLog('');
+            } else {
+                toast.error(res.data.messenger);
             }
         } catch (error) {
-            toast.error("Đã xảy ra lỗi khi đăng kí.");
+            toast.error('Đã xảy ra lỗi khi đăng kí.');
         }
     };
 
@@ -93,7 +92,7 @@ function Login() {
         } else if (emailLog === '') {
             setValidate((valid) => ({ ...valid, isvalidELog: true }));
         } else {
-            logInApi(emailLog, passWordLog);
+            logInApi({ emailLog, passWordLog });
         }
     };
 
@@ -146,7 +145,7 @@ function Login() {
             return;
         }
 
-        registerApi(LastName, firstName, email, passWord, day, month, year, checked);
+        registerApi({ LastName, firstName, email, passWord, day, month, year, checked });
     };
 
     const handleClose = () => setShow(false);
@@ -194,7 +193,7 @@ function Login() {
                             </Link>
                         </p>
                         <div className={cx('bnv')}>
-                            <button type='button' className={cx('ttkm')} onClick={handleShow}>
+                            <button type="button" className={cx('ttkm')} onClick={handleShow}>
                                 <span>Tạo tài khoản mới</span>
                             </button>
                         </div>

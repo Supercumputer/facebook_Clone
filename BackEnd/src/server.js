@@ -1,13 +1,18 @@
 const express = require("express");
 const router = require("./routes/index");
-const bodyParser = require("body-parser");
 const connectDb = require("./ConnectDb/ConnectDb");
 const cookieParser = require("cookie-parser");
+const bodyParser = require("body-parser");
+require("dotenv").config();
 const app = express();
-const port = 4000;
+const port = process.env.PORT;
+
+app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use(bodyParser.json());
 
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+  res.header("Access-Control-Allow-Origin", process.env.JWT_LOCALHOST);
   res.header(
     "Access-Control-Allow-Methods",
     "POST, GET, PUT,PATCH, DELETE, OPTIONS, "
@@ -17,11 +22,11 @@ app.use((req, res, next) => {
     "Access-Control-Allow-Headers",
     "Authorization, X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept"
   );
+  if (req.method === "OPTIONS") {
+    return res.sendStatus(200);
+  }
   next();
 });
-
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
 
 app.use(cookieParser());
 

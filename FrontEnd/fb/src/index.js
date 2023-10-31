@@ -3,16 +3,18 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import GlobalStyle from './Components/GlobalStyle/GlobalStyle';
-import LogInContext from './UseContext/LoginContext';
+import { store } from './Redux/store';
+import { Provider } from 'react-redux';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    // <React.StrictMode>
-    <LogInContext>
+   
+    <Provider store={store}>
         <GlobalStyle>
             <App />
         </GlobalStyle>
-        </LogInContext>
-    // </React.StrictMode>,
+    </Provider>,
+  
 );
 
 // If you want to start measuring performance in your app, pass a function

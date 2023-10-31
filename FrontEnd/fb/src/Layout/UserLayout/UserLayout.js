@@ -12,7 +12,7 @@ const cx = classNames.bind(styles);
 function UserLayout({ children }) {
 
     let id = useParams();
-
+    
     const [loading, setLoading] = useState(true)
     const [data, setData] = useState();
     const [check, setCheck] = useState(false)
@@ -21,15 +21,15 @@ function UserLayout({ children }) {
         getUserApi(id.userName);
     }, []);
 
+ console.log(data)
     async function getUserApi(id) {
         setLoading(true)
         try {
             let res = await getUser(id);
             if (res && res.data) {
+                console.log(res)
                 setData(res.data);
-            } else {
-
-            }
+            } 
         } catch (error) {
             console.log('Loi get user');
         }finally{

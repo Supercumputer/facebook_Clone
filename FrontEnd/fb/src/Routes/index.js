@@ -20,7 +20,6 @@ const publicRouter = [
         component: Error
     }
     
-    
 ]
 
 const privateRouter = [

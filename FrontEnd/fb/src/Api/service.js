@@ -1,43 +1,43 @@
 import instance from './axios';
 
-const login = (email, passWord) => {
-    return instance.post('/login', { email, passWord });
+export const apiLogin = (data) => {
+    return instance.post('/login', data);
 };
 
-const register = (LastName, firstName, email, passWord, day, month, year, gioiTinh) => {
-    return instance.post('/register', {LastName, firstName, email, passWord, day, month, year, gioiTinh})
-}
+export const apiRegister = (data) => {
+    return instance.post('/register', data);
+};
 
-// User Api -------------------------------------
+export const apiGetAcount = () => {
+    return instance.get('/user/getacount');
+};
 
-const getUser = (id) => {
-    return instance.get(`/user/${id}`)
-}
+export const apiLogout = () => {
+    return instance.get('/logout');
+};
 
-const getfriend = (id) => {
-    return instance.get(`/user/friend/${id}`)
-}
+export const getUser = (id) => {
+    return instance.get(`/user/${id}`);
+};
+
+export const getfriend = (id) => {
+    return instance.get(`/user/friend/${id}`);
+};
+
+export const getSpays = () => {
+    return instance.get('/spay');
+};
+
+export const getAllPost = () => {
+    return instance.get('/post');
+};
+
+export const postApi = (id, data) => {
+    return instance.post(`/post/${id}`, data);
+};
+
+export const getVideos = () => {
+    return instance.get('/video');
+};
 
 
-const getSpays = () => {
-    return instance.get('/spay')
-}
-
-// Post Api -------------------------------------
-
-const getAllPost = () => {
-    return instance.get('/post')
-}
-
-const postApi = (id, data) => {
-    return instance.post(`/post/${id}`, data)
-}
-
-// Video Api -------------------------------------
-
-const getVideos = () => {
-    return instance.get('/video')
-}
-
-
-export { login, register, getUser, getfriend, getVideos, getSpays, getAllPost, postApi};

@@ -1,23 +1,30 @@
 import classNames from 'classnames/bind';
 import styles from './Header.module.scss';
 import { logo } from '../../Image';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate} from 'react-router-dom';
 import StringContent from '../TipPy/TipPy';
 import TippyHeadless from '@tippyjs/react/headless';
 import UserName from '../UserName/UserName';
 import Search from '../Search/Search';
-import { useContext } from 'react';
-import { UserContext } from '../../UseContext/LoginContext';
+import { useSelector } from 'react-redux';
+import { apiLogout } from '../../Api/service';
 import Img from '../Img/Img';
 const cx = classNames.bind(styles);
 
 function Header() {
+    const navigate = useNavigate()
+    const athu = useSelector(state => state.auth.auth)
 
-    
-    const {user, logOut} = useContext(UserContext)
-    
-    const handlerLogOut = () => {
-        logOut()
+    const handlerLogOut = async () => {
+        try {
+            let res = await apiLogout()
+            if(res && res.status === 200){
+                localStorage.removeItem('jwt')
+                navigate('/login')
+            }
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     return (
@@ -88,7 +95,7 @@ function Header() {
                     render={(attrs) => (
                         <div className={cx('boxTip')} tabIndex="-1" {...attrs}>
                             <div className={cx('box1')}>
-                                <UserName avata={user.avata} firstName={user.name} to={`/user/${user.id}`}/>
+                                <UserName avata={athu.account.avata} firstName={athu.account.firstName + ' '+ athu.account.firstName} to={`/user/${athu.account.id}`}/>
                                 <div className={cx('borderLine')}>
                                     <p className={cx('t1')}>Xem tất cả trang cá nhân</p>
                                     <p className={cx('t2')}>Chỉnh sửa</p>
@@ -108,7 +115,7 @@ function Header() {
                     )}
                 >
                     <div className={cx('userAvata')}>
-                        <Img src={user.avata} alt={''}/>
+                        <Img src={'user.avata'} alt={''}/>
                     </div>
                 </TippyHeadless>
             </div>
